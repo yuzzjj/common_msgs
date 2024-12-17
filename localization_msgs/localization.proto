@@ -17,11 +17,11 @@ syntax = "proto3";
 
 package openbot.common_msgs.localization;
 
-import "openbot/common_msgs/basic_msgs/header.proto";
-import "openbot/common_msgs/basic_msgs/geometry.proto";
-import "openbot/common_msgs/basic_msgs/pnc_point.proto";
-import "openbot/common_msgs/localization_msgs/localization_status.proto";
-import "openbot/common_msgs/localization_msgs/pose.proto";
+import "basic_msgs/header.proto";
+import "basic_msgs/geometry.proto";
+import "basic_msgs/pnc_point.proto";
+import "localization_msgs/localization_status.proto";
+import "localization_msgs/pose.proto";
 
 message Uncertainty {
   // Standard deviation of position, east/north/up in meters.

@@ -17,9 +17,9 @@ syntax = "proto3";
 
 package openbot.common_msgs.audio;
 
-import "openbot/common_msgs/audio_msgs/audio_common.proto";
-import "openbot/common_msgs/basic_msgs/header.proto";
-import "openbot/common_msgs/localization_msgs/pose.proto";
+import "audio_msgs/audio_common.proto";
+import "basic_msgs/header.proto";
+import "localization_msgs/pose.proto";
 
 message AudioEvent 
 {
