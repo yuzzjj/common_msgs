@@ -20,10 +20,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_GRPC "Build common_msgs gRPC support" false)
+option(BUILD_GRPC "Build common_msgs gRPC support" true)
 
 find_package(Protobuf REQUIRED)
-
 
 if (${BUILD_GRPC})
   find_package(gRPC REQUIRED)
@@ -35,7 +34,7 @@ install(FILES package.xml DESTINATION share/common_msgs)
 
 file(GLOB_RECURSE ALL_PROTOS "${PROJECT_SOURCE_DIR}/*.proto")
 file(GLOB_RECURSE ALL_GRPC_SERVICES "${PROJECT_SOURCE_DIR}/*_service.proto")
-list(REMOVE_ITEM ALL_PROTOS ALL_GRPC_SERVICES)
+list(REMOVE_ITEM ALL_PROTOS ${ALL_GRPC_SERVICES})
 
 set(ALL_PROTO_SRCS)
 set(ALL_PROTO_HDRS)
@@ -60,6 +59,8 @@ if(${BUILD_GRPC})
 
     list(APPEND ALL_GRPC_SERVICE_SRCS "${PROJECT_BINARY_DIR}/${DIR}/${FIL_WE}.grpc.pb.cc")
     list(APPEND ALL_GRPC_SERVICE_HDRS "${PROJECT_BINARY_DIR}/${DIR}/${FIL_WE}.grpc.pb.h")
+    list(APPEND ALL_GRPC_SERVICE_SRCS "${PROJECT_BINARY_DIR}/${DIR}/${FIL_WE}.pb.cc")
+    list(APPEND ALL_GRPC_SERVICE_HDRS "${PROJECT_BINARY_DIR}/${DIR}/${FIL_WE}.pb.h")
 
     add_custom_command(
       OUTPUT "${PROJECT_BINARY_DIR}/${DIR}/${FIL_WE}.pb.cc"
