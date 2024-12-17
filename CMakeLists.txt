@@ -22,6 +22,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_GRPC "Build common_msgs gRPC support" true)
 
+find_package(absl REQUIRED)
 find_package(Protobuf REQUIRED)
 
 if (${BUILD_GRPC})
@@ -155,7 +156,7 @@ configure_package_config_file(
 install(
   EXPORT common_msgsExport
   DESTINATION share/common_msgs/cmake/
-  FILE Common_msgsTargets.cmake
+  FILE common_msgsTargets.cmake
 )
 
 install(
