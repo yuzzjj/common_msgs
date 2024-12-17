@@ -40,7 +40,7 @@ set(ALL_PROTO_SRCS)
 set(ALL_PROTO_HDRS)
 
 find_program(PROTOBUF_PROTOC_EXECUTABLE protoc)
-if(PROTOBUF_PROTOC_EXECUTABLE)
+if(NOT PROTOBUF_PROTOC_EXECUTABLE)
   message(STATUS, "protoc not found. Please install protobuf and make sure it's in your PATH.")
 endif()
 
@@ -146,20 +146,19 @@ install(
 set(COMMON_MSGS_CMAKE_DIR share/common_msgs/cmake)
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/common_msgs-config.cmake.in
+  ${PROJECT_SOURCE_DIR}/cmake/common_msgs-config.cmake.in
   ${PROJECT_BINARY_DIR}/cmake/common_msgs/common_msgs-config.cmake
   PATH_VARS COMMON_MSGS_CMAKE_DIR
   INSTALL_DESTINATION ${CMAKE_INSTALL_PREFIX}/share/common_msgs
 )
 
 install(
-    EXPORT common_msgsExport
-    DESTINATION share/common_msgs/cmake/
-    FILE common_msgsTargets.cmake
+  EXPORT common_msgsExport
+  DESTINATION share/common_msgs/cmake/
+  FILE Common_msgsTargets.cmake
 )
 
-install(TARGETS
-  ${PROJECT_NAME}
-  ARCHIVE DESTINATION lib
-  LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin)
+install(
+  FILES ${PROJECT_BINARY_DIR}/cmake/common_msgs/common_msgs-config.cmake
+  DESTINATION share/common_msgs/
+)

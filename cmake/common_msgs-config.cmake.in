@@ -22,7 +22,6 @@
 
 set_and_check(COMMON_MSGS_CMAKE_DIR "@PACKAGE_COMMON_MSGS_CMAKE_DIR@")
 
-
 if (common_msgs_FIND_QUIETLY)
    set(QUIET_OR_REQUIRED_OPTION "QUIET")
 elseif (common_msgs_FIND_REQUIRED)
@@ -31,9 +30,15 @@ else ()
    set(QUIET_OR_REQUIRED_OPTION "")
 endif()
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${OPENBOT_CMAKE_DIR}/modules)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${COMMON_MSGS_CMAKE_DIR}/modules)
 
+#find_package(Ceres ${QUIET_OR_REQUIRED_OPTION} HINTS ${CERES_DIR_HINTS})
+find_package(absl ${QUIET_OR_REQUIRED_OPTION})
 
-include("${OPENBOT_CMAKE_DIR}/common_msgsTargets.cmake")
+if(COMMON_MSGS_HAS_GRPC)
+   find_package(async_grpc ${QUIET_OR_REQUIRED_OPTION})
+endif()
+
+include("${COMMON_MSGS_CMAKE_DIR}/common_msgsTargets.cmake")
 
 unset(QUIET_OR_REQUIRED_OPTION)
