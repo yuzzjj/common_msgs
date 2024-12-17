@@ -16,7 +16,7 @@
 -->
 
 <package format="3">
-  <name>common msgs</name>
+  <name>openbot_bridge</name>
   <!--
   We add 900 to the patch part of the version and then multiply it by 10,
   i.e. our version = `(upstream_patch_version + 900) * 10`,
@@ -39,12 +39,12 @@
   and so on...
   -->
   <version>2.0.9003</version>
-  <description>common msgs
+  <description>openbot_bridge
   </description>
   <maintainer email="quandy2020@126.com">Du YongQuan</maintainer>
   <license>Apache 2.0</license>
 
-  <url>https://github.com/AibotBeginer/common_msgs</url>
+  <url>https://github.com/AibotBeginer/openbot_bridge</url>
 
   <author email="quandy2020@126.com">Du YongQuan</author>
   <buildtool_depend>cmake</buildtool_depend>

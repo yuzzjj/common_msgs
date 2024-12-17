@@ -20,8 +20,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_GRPC "Build openbot_bridge gRPC support" false)
+option(BUILD_GRPC "Build openbot_bridge gRPC support" true)
 
+find_package(absl REQUIRED)
 find_package(Protobuf REQUIRED)
 
 if (${BUILD_GRPC})
@@ -155,7 +156,7 @@ configure_package_config_file(
 install(
   EXPORT openbot_bridgeExport
   DESTINATION share/openbot_bridge/cmake/
-  FILE Common_msgsTargets.cmake
+  FILE openbot_bridgeTargets.cmake
 )
 
 install(
