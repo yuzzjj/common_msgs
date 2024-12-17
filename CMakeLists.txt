@@ -14,13 +14,13 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-project(common_msgs)
+project(openbot_bridge)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_GRPC "Build common_msgs gRPC support" true)
+option(BUILD_GRPC "Build openbot_bridge gRPC support" false)
 
 find_package(Protobuf REQUIRED)
 
@@ -30,7 +30,7 @@ if (${BUILD_GRPC})
 endif()
 
 # Install catkin package.xml
-install(FILES package.xml DESTINATION share/common_msgs)
+install(FILES package.xml DESTINATION share/openbot_bridge)
 
 file(GLOB_RECURSE ALL_PROTOS "${PROJECT_SOURCE_DIR}/*.proto")
 file(GLOB_RECURSE ALL_GRPC_SERVICES "${PROJECT_SOURCE_DIR}/*_service.proto")
@@ -137,28 +137,38 @@ endforeach()
 
 install(
   TARGETS ${PROJECT_NAME}
-  EXPORT common_msgsExport
+  EXPORT openbot_bridgeExport
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
 )
 
-set(COMMON_MSGS_CMAKE_DIR share/common_msgs/cmake)
+set(OPENBOT_BRIDGE_CMAKE_DIR share/openbot_bridge/cmake)
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
-  ${PROJECT_SOURCE_DIR}/cmake/common_msgs-config.cmake.in
-  ${PROJECT_BINARY_DIR}/cmake/common_msgs/common_msgs-config.cmake
-  PATH_VARS COMMON_MSGS_CMAKE_DIR
-  INSTALL_DESTINATION ${CMAKE_INSTALL_PREFIX}/share/common_msgs
+  ${PROJECT_SOURCE_DIR}/cmake/openbot_bridge-config.cmake.in
+  ${PROJECT_BINARY_DIR}/cmake/openbot_bridge/openbot_bridge-config.cmake
+  PATH_VARS OPENBOT_BRIDGE_CMAKE_DIR
+  INSTALL_DESTINATION ${CMAKE_INSTALL_PREFIX}/share/openbot_bridge
 )
 
 install(
-  EXPORT common_msgsExport
-  DESTINATION share/common_msgs/cmake/
+  EXPORT openbot_bridgeExport
+  DESTINATION share/openbot_bridge/cmake/
   FILE Common_msgsTargets.cmake
 )
 
 install(
-  FILES ${PROJECT_BINARY_DIR}/cmake/common_msgs/common_msgs-config.cmake
-  DESTINATION share/common_msgs/
+  FILES ${PROJECT_BINARY_DIR}/cmake/openbot_bridge/openbot_bridge-config.cmake
+  DESTINATION share/openbot_bridge/
 )
+
+set(INSTALL_GENERATED_HDRS ${ALL_PROTO_HDRS} ${ALL_GRPC_SERVICE_HDRS})
+foreach(HDR ${INSTALL_GENERATED_HDRS})
+  file(RELATIVE_PATH REL_FIL ${PROJECT_BINARY_DIR} ${HDR})
+  get_filename_component(DIR ${REL_FIL} DIRECTORY)
+  install(
+    FILES ${HDR}
+    DESTINATION include/${DIR}
+  )
+endforeach()
