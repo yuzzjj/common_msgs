@@ -1,7 +1,0 @@
-/workspace/openbot/src/openbot_ros/openbot_bridge/build/CMakeFiles/openbot_bridge.dir
-/workspace/openbot/src/openbot_ros/openbot_bridge/build/CMakeFiles/edit_cache.dir
-/workspace/openbot/src/openbot_ros/openbot_bridge/build/CMakeFiles/rebuild_cache.dir
-/workspace/openbot/src/openbot_ros/openbot_bridge/build/CMakeFiles/list_install_components.dir
-/workspace/openbot/src/openbot_ros/openbot_bridge/build/CMakeFiles/install.dir
-/workspace/openbot/src/openbot_ros/openbot_bridge/build/CMakeFiles/install/local.dir
-/workspace/openbot/src/openbot_ros/openbot_bridge/build/CMakeFiles/install/strip.dir
