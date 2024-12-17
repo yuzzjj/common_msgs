@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot.common_msgs.drivers;
 
-import "openbot/common_msgs/basic_msgs/header.proto";
+import "basic_msgs/header.proto";
 
 // Encoding of pixels -- channel meaning, ordering, size
 enum PixelFormat 

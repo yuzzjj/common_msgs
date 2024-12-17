@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot.ros2_msgs.geometry_msgs;
 
-import "openbot/common_msgs/ros2_msgs/std_msgs.proto";
+import "ros2_msgs/std_msgs.proto";
 
 // This expresses acceleration in free space broken into its linear and angular parts.
 message Accel 
