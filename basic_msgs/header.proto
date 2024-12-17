@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot.common_msgs;
 
-import "openbot/common_msgs/basic_msgs/error_code.proto";
+import "basic_msgs/error_code.proto";
 
 message Header 
 {

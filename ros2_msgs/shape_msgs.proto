@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot.ros2_msgs.shape_msgs;
 
-import "openbot/common_msgs/ros2_msgs/geometry_msgs.proto";
+import "ros2_msgs/geometry_msgs.proto";
 
 message Plane
 {

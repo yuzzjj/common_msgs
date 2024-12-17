@@ -16,9 +16,9 @@ syntax = "proto3";
 
 package openbot.common_msgs;
 
-import "openbot/common_msgs/basic_msgs/header.proto";
-import "openbot/common_msgs/basic_msgs/geometry.proto";
-import "openbot/common_msgs/basic_msgs/vehicle_id.proto";
+import "basic_msgs/header.proto";
+import "basic_msgs/geometry.proto";
+import "basic_msgs/vehicle_id.proto";
 
 message Transform 
 {
