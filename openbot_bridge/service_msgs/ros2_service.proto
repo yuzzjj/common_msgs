@@ -17,3 +17,16 @@ syntax = "proto3";
 package openbot_bridge.service_msgs;
 
 import "google/protobuf/empty.proto";
+import "openbot_bridge/ros2_msgs/sensor_msgs.proto";
+
+service ROS2SenorService
+{
+    // sensor_msgs::Image(ros2 type)
+    rpc PublishImageSennorMessages(openbot_bridge.ros2_msgs.sensor_msgs.Image) returns (google.protobuf.Empty);
+
+    // sensor_msgs::Imu(ros2 type)
+    rpc PublishImuSensorMessages(openbot_bridge.ros2_msgs.sensor_msgs.Imu) returns (google.protobuf.Empty);
+
+    // sensor_msgs::PointCloud(ros2 type)
+    rpc PublishPointCloudSensorMessages(openbot_bridge.ros2_msgs.sensor_msgs.PointCloud) returns (google.protobuf.Empty);
+}
