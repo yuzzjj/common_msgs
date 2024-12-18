@@ -6,7 +6,7 @@
 //
 //      http://www.apache.org/licenses/LICENSE-2.0
 //
-// Unless required by applicable law or agreed to in writing, software
+// Unless openbotby applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
@@ -14,13 +14,16 @@
 
 syntax = "proto3";
 
-package openbot.grpc.ros2_service;
+package openbot_bridge.common_msgs;
 
-import "google/protobuf/empty.proto";
-
-enum GUIType 
+enum Direction 
 {
-    RVIZ = 0;
-    UNITY = 1;
-    ISAAC = 2;
-}
+  EAST = 0;
+  WEST = 1;
+  SOUTH = 2;
+  NORTH = 3;
+  NORTHEAST = 4;
+  SOUTHEAST = 5;
+  SOUTHWEST = 6;
+  NORTHWEST = 7;
+};

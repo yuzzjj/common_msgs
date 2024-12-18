@@ -12,18 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 syntax = "proto3";
 
-package openbot.common_msgs;
+package openbot_bridge.common_msgs;
 
-enum Direction 
+message VehicleID 
 {
-  EAST = 0;
-  WEST = 1;
-  SOUTH = 2;
-  NORTH = 3;
-  NORTHEAST = 4;
-  SOUTHEAST = 5;
-  SOUTHWEST = 6;
-  NORTHWEST = 7;
-};
+  string vin = 1;
+  string plate = 2;
+  string other_unique_id = 3;
+}

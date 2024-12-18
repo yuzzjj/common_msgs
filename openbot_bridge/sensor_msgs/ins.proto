@@ -16,12 +16,12 @@ syntax = "proto3";
 
 package openbot_bridge.sensor_msgs;
 
-import "openbot_bridge/basic_msgs/geometry.proto";
-import "openbot_bridge/basic_msgs/header.proto";
+import "openbot_bridge/common_msgs/geometry.proto";
+import "openbot_bridge/common_msgs/header.proto";
 
 message InsStat 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
   uint32 ins_status = 2;
   uint32 pos_type = 3;
 }
@@ -30,7 +30,7 @@ message InsStat
 // and IMU measurements.
 message Ins 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
 
   // The time of position measurement, seconds since the GPS epoch (01/06/1980).
   double measurement_time = 2;  // In seconds.
@@ -51,19 +51,19 @@ message Ins
   Type type = 3;
 
   // Position of the IMU.
-  openbot_bridge.basic_msgs.PointLLH position = 4;
+  openbot_bridge.common_msgs.PointLLH position = 4;
 
   // Roll/pitch/yaw that represents a rotation of the intrinsic sequence z-y-x.
   // Note: our definition differs from what NovAtel and aviation use.
 
   // Roll/pitch/yaw in radians.
-  openbot_bridge.basic_msgs.Point3D euler_angles = 5;
+  openbot_bridge.common_msgs.Point3D euler_angles = 5;
   // East/north/up in meters per second.
-  openbot_bridge.basic_msgs.Point3D linear_velocity = 6;
+  openbot_bridge.common_msgs.Point3D linear_velocity = 6;
   // Around forward/left/up axes in radians per second.
-  openbot_bridge.basic_msgs.Point3D angular_velocity = 7;
+  openbot_bridge.common_msgs.Point3D angular_velocity = 7;
   // Forward/left/up in meters per square second.
-  openbot_bridge.basic_msgs.Point3D linear_acceleration = 8;
+  openbot_bridge.common_msgs.Point3D linear_acceleration = 8;
 
   // The size of a covariance matrix field may be
   //  3: then the elements are xx, yy, zz.

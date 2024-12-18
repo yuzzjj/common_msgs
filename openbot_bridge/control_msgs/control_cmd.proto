@@ -17,5 +17,5 @@ syntax = "proto3";
 package openbot_bridge.control_msgs;
 
 import "google/protobuf/any.proto";
-import "openbot_bridge/basic_msgs/header.proto";
+import "openbot_bridge/common_msgs/header.proto";
 

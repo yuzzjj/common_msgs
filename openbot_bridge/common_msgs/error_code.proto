@@ -14,7 +14,7 @@
 
 syntax = "proto3";
 
-package openbot.common_msgs;
+package openbot_bridge.common_msgs;
 
 // Error codes enum for API's categorized by openbot.
 enum ErrorCode 
