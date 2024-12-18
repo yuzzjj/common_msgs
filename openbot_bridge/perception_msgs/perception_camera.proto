@@ -14,4 +14,4 @@
 
 syntax = "proto3";
 
-package openbot.basic_msgs.perception.camera;
+package openbot.common_msgs.perception.camera;

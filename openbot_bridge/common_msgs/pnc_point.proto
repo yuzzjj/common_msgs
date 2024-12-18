@@ -18,7 +18,7 @@ syntax = "proto3";
 // Defined Point types that are commonly used in PnC (Planning and Control)
 // openbot.
 
-package openbot.common_msgs;
+package openbot_bridge.common_msgs;
 
 message SLPoint 
 {

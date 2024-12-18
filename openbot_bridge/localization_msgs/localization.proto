@@ -17,36 +17,36 @@ syntax = "proto3";
 
 package openbot_bridge.localization_msgs;
 
-import "openbot_bridge/basic_msgs/header.proto";
-import "openbot_bridge/basic_msgs/geometry.proto";
-import "openbot_bridge/basic_msgs/pnc_point.proto";
+import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/geometry.proto";
+import "openbot_bridge/common_msgs/pnc_point.proto";
 import "openbot_bridge/localization_msgs/localization_status.proto";
 import "openbot_bridge/localization_msgs/pose.proto";
 
 message Uncertainty {
   // Standard deviation of position, east/north/up in meters.
-  openbot_bridge.basic_msgs.Point3D position_std_dev = 1;
+  openbot_bridge.common_msgs.Point3D position_std_dev = 1;
 
   // Standard deviation of quaternion qx/qy/qz, unitless.
-  openbot_bridge.basic_msgs.Point3D orientation_std_dev = 2;
+  openbot_bridge.common_msgs.Point3D orientation_std_dev = 2;
 
   // Standard deviation of linear velocity, east/north/up in meters per second.
-  openbot_bridge.basic_msgs.Point3D linear_velocity_std_dev = 3;
+  openbot_bridge.common_msgs.Point3D linear_velocity_std_dev = 3;
 
   // Standard deviation of linear acceleration, right/forward/up in meters per
   // square second.
-  openbot_bridge.basic_msgs.Point3D linear_acceleration_std_dev = 4;
+  openbot_bridge.common_msgs.Point3D linear_acceleration_std_dev = 4;
 
   // Standard deviation of angular velocity, right/forward/up in radians per
   // second.
-  openbot_bridge.basic_msgs.Point3D angular_velocity_std_dev = 5;
+  openbot_bridge.common_msgs.Point3D angular_velocity_std_dev = 5;
 
   // TODO: Define covariance items when needed.
 }
 
 message LocalizationEstimate 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
   openbot_bridge.localization_msgs.Pose pose = 2;
   Uncertainty uncertainty = 3;
 
@@ -54,7 +54,7 @@ message LocalizationEstimate
   double measurement_time = 4;  // In seconds.
 
   // Future trajectory actually driven by the drivers
-  repeated openbot_bridge.basic_msgs.TrajectoryPoint trajectory_point = 5;
+  repeated openbot_bridge.common_msgs.TrajectoryPoint trajectory_point = 5;
 
   // msf status
   MsfStatus msf_status = 6;
@@ -73,7 +73,7 @@ enum MeasureState
 
 message LocalizationStatus 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
   MeasureState fusion_status = 2;
   MeasureState gnss_status = 3;
   MeasureState lidar_status = 4;

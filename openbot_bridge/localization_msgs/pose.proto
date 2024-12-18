@@ -17,30 +17,30 @@ syntax = "proto3";
 
 package openbot_bridge.localization_msgs;
 
-import "openbot_bridge/basic_msgs/geometry.proto";
+import "openbot_bridge/common_msgs/geometry.proto";
 
 message Pose 
 {
   // Position of the vehicle reference point (VRP) in the map reference frame.
   // The VRP is the center of rear axle.
-  openbot_bridge.basic_msgs.PointENU position = 1;
+  openbot_bridge.common_msgs.PointENU position = 1;
 
   // A quaternion that represents the rotation from the IMU coordinate
   // (Right/Forward/Up) to the
   // world coordinate (East/North/Up).
-  openbot_bridge.basic_msgs.Quaternion orientation = 2;
+  openbot_bridge.common_msgs.Quaternion orientation = 2;
 
   // Linear velocity of the VRP in the map reference frame.
   // East/north/up in meters per second.
-  openbot_bridge.basic_msgs.Point3D linear_velocity = 3;
+  openbot_bridge.common_msgs.Point3D linear_velocity = 3;
 
   // Linear acceleration of the VRP in the map reference frame.
   // East/north/up in meters per square second.
-  openbot_bridge.basic_msgs.Point3D linear_acceleration = 4;
+  openbot_bridge.common_msgs.Point3D linear_acceleration = 4;
 
   // Angular velocity of the vehicle in the map reference frame.
   // Around east/north/up axes in radians per second.
-  openbot_bridge.basic_msgs.Point3D angular_velocity = 5;
+  openbot_bridge.common_msgs.Point3D angular_velocity = 5;
 
   // Heading
   // The heading is zero when the car is facing East and positive when facing
@@ -49,11 +49,11 @@ message Pose
 
   // Linear acceleration of the VRP in the vehicle reference frame.
   // Right/forward/up in meters per square second.
-  openbot_bridge.basic_msgs.Point3D linear_acceleration_vrf = 7;
+  openbot_bridge.common_msgs.Point3D linear_acceleration_vrf = 7;
 
   // Angular velocity of the VRP in the vehicle reference frame.
   // Around right/forward/up axes in radians per second.
-  openbot_bridge.basic_msgs.Point3D angular_velocity_vrf = 8;
+  openbot_bridge.common_msgs.Point3D angular_velocity_vrf = 8;
 
   // Roll/pitch/yaw that represents a rotation with intrinsic sequence z-x-y.
   // in world coordinate (East/North/Up)
@@ -61,5 +61,5 @@ message Pose
   // The pitch, in [-pi, pi), corresponds to a rotation around the x-axis.
   // The yaw, in [-pi, pi), corresponds to a rotation around the z-axis.
   // The direction of rotation follows the right-hand rule.
-  openbot_bridge.basic_msgs.Point3D euler_angles = 9;
+  openbot_bridge.common_msgs.Point3D euler_angles = 9;
 }

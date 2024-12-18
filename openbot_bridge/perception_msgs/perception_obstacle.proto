@@ -14,5 +14,5 @@
 
 syntax = "proto3";
 
-package openbot.basic_msgs.perception;
+package openbot.common_msgs.perception;
 
