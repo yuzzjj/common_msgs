@@ -14,7 +14,7 @@
 
 syntax = "proto3";
 
-package openbot_bridge.basic_msgs;
+package openbot_bridge.common_msgs;
 
 // A point in the map reference frame. The map defines an origin, whose
 // coordinate is (0, 0, 0).

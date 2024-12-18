@@ -16,14 +16,14 @@ syntax = "proto3";
 
 package openbot_bridge.sensor_msgs;
 
-import "openbot_bridge/basic_msgs/geometry.proto";
-import "openbot_bridge/basic_msgs/header.proto";
+import "openbot_bridge/common_msgs/geometry.proto";
+import "openbot_bridge/common_msgs/header.proto";
 
 // Solution from a Global Navigation Satellite System (GNSS) receiver without
 // fused with any IMU.
 message Gnss 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
 
   // The time of position measurement, seconds since the GPS epoch (Jan 6,
   // 1980).
@@ -37,14 +37,14 @@ message Gnss
   float velocity_latency = 3;  // In seconds.
 
   // Position of the GNSS antenna phase center.
-  openbot_bridge.basic_msgs.PointLLH position = 4;
+  openbot_bridge.common_msgs.PointLLH position = 4;
 
   // East/north/up in meters.
-  openbot_bridge.basic_msgs.Point3D position_std_dev = 5;
+  openbot_bridge.common_msgs.Point3D position_std_dev = 5;
   // East/north/up in meters per second.
-  openbot_bridge.basic_msgs.Point3D linear_velocity = 6;
+  openbot_bridge.common_msgs.Point3D linear_velocity = 6;
   // East/north/up in meters per second.
-  openbot_bridge.basic_msgs.Point3D linear_velocity_std_dev = 7;
+  openbot_bridge.common_msgs.Point3D linear_velocity_std_dev = 7;
 
   int32 num_sats = 8;  // Number of satellites in position solution.
 
@@ -72,6 +72,6 @@ message Gnss
 // gnss raw data
 message RawData 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
   bytes data = 2;
 }

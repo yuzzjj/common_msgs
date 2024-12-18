@@ -2,12 +2,12 @@ syntax = "proto3";
 
 package openbot_bridge.localization_msgs;
 
-import "openbot_bridge/basic_msgs/header.proto";
+import "openbot_bridge/common_msgs/header.proto";
 import "openbot_bridge/localization_msgs/pose.proto";
 
 message CorrectedImu 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
 
   // Inertial Measurement Unit(IMU)
   openbot_bridge.localization_msgs.Pose imu = 3;

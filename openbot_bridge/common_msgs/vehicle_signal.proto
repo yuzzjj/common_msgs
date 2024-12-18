@@ -12,22 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 syntax = "proto3";
 
-package openbot.common_msgs;
+package openbot_bridge.common_msgs;
 
-// This is the engage advice that published by critical runtime openbot.
-message EngageAdvice 
+message VehicleSignal 
 {
-  enum Advice 
+  enum TurnSignal 
   {
-    UNKNOWN = 0;
-    DISALLOW_ENGAGE = 1;
-    READY_TO_ENGAGE = 2;
-    KEEP_ENGAGED = 3;
-    PREPARE_DISENGAGE = 4;
-  }
-
-  Advice advice = 1;
-  string reason = 2;
+    TURN_NONE = 0;
+    TURN_LEFT = 1;
+    TURN_RIGHT = 2;
+    TURN_HAZARD_WARNING = 3;
+  };
+  TurnSignal turn_signal = 1;
+  // lights enable command
+  bool high_beam = 2;
+  bool low_beam = 3;
+  bool horn = 4;
+  bool emergency_light = 5;
 }

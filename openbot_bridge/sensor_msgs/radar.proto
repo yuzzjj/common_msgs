@@ -16,9 +16,9 @@ syntax = "proto3";
 
 package openbot_bridge.sensor_msgs;
 
-import "openbot_bridge/basic_msgs/error_code.proto";
-import "openbot_bridge/basic_msgs/geometry.proto";
-import "openbot_bridge/basic_msgs/header.proto";
+import "openbot_bridge/common_msgs/error_code.proto";
+import "openbot_bridge/common_msgs/geometry.proto";
+import "openbot_bridge/common_msgs/header.proto";
 
 message RadarObstacle 
 {
@@ -43,9 +43,9 @@ message RadarObstacle
   // obstacle ID.
   int32 id = 1;
   // obstacle position in the sl coordinate system.
-  openbot_bridge.basic_msgs.Point2D relative_position = 2;
+  openbot_bridge.common_msgs.Point2D relative_position = 2;
   // obstacle relative velocity.
-  openbot_bridge.basic_msgs.Point2D relative_velocity = 3;
+  openbot_bridge.common_msgs.Point2D relative_velocity = 3;
   // radar signal intensity.
   double rcs = 4;
   // whether this obstacle is able to move.
@@ -55,9 +55,9 @@ message RadarObstacle
   double height = 8;
   double theta = 9;
   // obstacle position in map coordinate system
-  openbot_bridge.basic_msgs.Point2D absolute_position = 10;
+  openbot_bridge.common_msgs.Point2D absolute_position = 10;
   // obstacle position in map coordinate system
-  openbot_bridge.basic_msgs.Point2D absolute_velocity = 11;
+  openbot_bridge.common_msgs.Point2D absolute_velocity = 11;
   int32 count = 12;
   int32 moving_frames_count = 13;
   Status status = 14;
@@ -66,6 +66,6 @@ message RadarObstacle
 message RadarObstacles 
 {
   map<int32, RadarObstacle> radar_obstacle = 1;  // An array of obstacles
-  openbot_bridge.basic_msgs.Header header = 2;      // Header
-  openbot_bridge.basic_msgs.ErrorCode error_code = 3;
+  openbot_bridge.common_msgs.Header header = 2;      // Header
+  openbot_bridge.common_msgs.ErrorCode error_code = 3;
 }

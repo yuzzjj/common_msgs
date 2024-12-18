@@ -16,9 +16,9 @@ syntax = "proto3";
 
 package openbot_bridge.config_msgs;
 
-import "openbot_bridge/basic_msgs/header.proto";
-import "openbot_bridge/basic_msgs/geometry.proto";
-import "openbot_bridge/basic_msgs/vehicle_id.proto";
+import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/geometry.proto";
+import "openbot_bridge/common_msgs/vehicle_id.proto";
 
 message Transform 
 {
@@ -27,10 +27,10 @@ message Transform
   bytes target_frame = 2;  // Also known as "child_frame_id."
 
   // Position of target in the source frame.
-  basic_msgs.Point3D translation = 3;
+  common_msgs.Point3D translation = 3;
 
   // Activate rotation from the source frame to the target frame.
-  basic_msgs.Quaternion rotation = 4;
+  common_msgs.Quaternion rotation = 4;
 }
 
 message Extrinsics 
@@ -69,7 +69,7 @@ message VehicleParam
 {
   VehicleBrand brand = 1;
   // Car center point is car reference point, i.e., center of rear axle.
-  basic_msgs.VehicleID vehicle_id = 2;
+  common_msgs.VehicleID vehicle_id = 2;
   double front_edge_to_center = 3;
   double back_edge_to_center = 4;
   double left_edge_to_center = 5;
@@ -115,7 +115,7 @@ message VehicleParam
 
 message VehicleConfig 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
   VehicleParam vehicle_param = 2;
   Extrinsics extrinsics = 3;
 }

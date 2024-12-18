@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot_bridge.sensor_msgs;
 
-import "openbot_bridge/basic_msgs/header.proto";
+import "openbot_bridge/common_msgs/header.proto";
 
 message PointXYZIT 
 {
@@ -29,7 +29,7 @@ message PointXYZIT
 
 message PointCloud 
 {
-  openbot_bridge.basic_msgs.Header header = 1;
+  openbot_bridge.common_msgs.Header header = 1;
   string frame_id = 2;
   bool is_dense = 3;
   repeated PointXYZIT point = 4;
