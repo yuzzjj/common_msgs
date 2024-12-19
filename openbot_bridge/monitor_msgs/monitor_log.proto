@@ -58,7 +58,7 @@ message MonitorMessageItem
     ERROR = 2;
     FATAL = 3;
   }
-  LogLevel log_level = 3 [default = INFO];
+  LogLevel log_level = 3;
 }
 
 message MonitorMessage 
