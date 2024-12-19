@@ -47,7 +47,7 @@ endif()
 
 find_program(GRPC_CPP_PLUGIN grpc_cpp_plugin)
 if(NOT GRPC_CPP_PLUGIN)
-  message(FATAL_ERROR "grpc_cpp_plugin not found. Please install gRPC and make sure it's in your PATH.")
+  message(STATUS "grpc_cpp_plugin not found. Please install gRPC and make sure it's in your PATH.")
 endif()
 
 if(${BUILD_GRPC})
