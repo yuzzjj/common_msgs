@@ -15,3 +15,12 @@
 syntax = "proto3";
 
 package openbot_bridge.service_msgs;
+
+import "google/protobuf/empty.proto";
+import "openbot_bridge/sensor_msgs/sensor_image.proto";
+
+service SensorService 
+{
+   // sensor_msgs::Image
+   rpc PublishImageSennorMessages(openbot_bridge.sensor_msgs.Image) returns (google.protobuf.Empty);
+}
