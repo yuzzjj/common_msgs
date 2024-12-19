@@ -22,6 +22,7 @@ message MonitorMessageItem
 {
   enum MessageSource 
   {
+    NONE = 0;
     UNKNOWN = 1;
     CANBUS = 2;
     CONTROL = 3;
