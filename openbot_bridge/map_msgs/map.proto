@@ -15,30 +15,3 @@
 syntax = "proto3";
 
 package openbot_bridge.map_msgs;
-
-// This message defines how we project the ellipsoidal Earth surface to a plane.
-message Projection {
-  // PROJ.4 setting:
-  // "+proj=tmerc +lat_0={origin.lat} +lon_0={origin.lon} +k={scale_factor}
-  // +ellps=WGS84 +no_defs"
-  string proj = 1;
-}
-
-message Header {
-  bytes version = 1;
-  bytes date = 2;
-  Projection projection = 3;
-  bytes district = 4;
-  bytes generation = 5;
-  bytes rev_major = 6;
-  bytes rev_minor = 7;
-  double left = 8;
-  double top = 9;
-  double right = 10;
-  double bottom = 11;
-  bytes vendor = 12;
-}
-
-message Map {
-  Header header = 1;
-}
