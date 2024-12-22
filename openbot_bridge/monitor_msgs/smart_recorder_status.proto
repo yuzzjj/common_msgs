@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot_bridge.monitor_msgs;
 
-import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 enum RecordingState 
 {
@@ -27,7 +27,7 @@ enum RecordingState
 
 message SmartRecorderStatus 
 {
-  openbot_bridge.common_msgs.Header header = 1;
+  common_msgs.Header header = 1;
   RecordingState recording_state = 2;
   string state_message = 3;
 }

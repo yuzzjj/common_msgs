@@ -14,20 +14,20 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.nav_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/std_msgs.proto";
-import "openbot_bridge/ros2_msgs/builtin_interfaces.proto";
-import "openbot_bridge/ros2_msgs/geometry_msgs.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
+import "openbot_bridge/common_msgs/builtin_interfaces.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
 
 // An array of poses that represents a Path for a robot to follow.
 message Path 
 {
     // Indicates the frame_id of the path.
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Array of poses to follow.
-    repeated geometry_msgs.PoseStamped poses = 2;
+    repeated PoseStamped poses = 2;
 }
 
 message Odometry
@@ -37,22 +37,22 @@ message Odometry
     // The twist in this message should be specified in the coordinate frame given by the child_frame_id
 
     // Includes the frame id of the pose parent.
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Frame id the pose points to. The twist is in this coordinate frame.
     string child_frame_id = 2;
 
     // Estimated pose that is typically relative to a fixed world frame.
-    geometry_msgs.PoseWithCovariance pose = 3;
+    PoseWithCovariance pose = 3;
 
     // Estimated linear and angular velocity relative to child_frame_id.
-    geometry_msgs.TwistWithCovariance twist = 4;
+    TwistWithCovariance twist = 4;
 }
 
 // An array of cells in a 2D grid
 message GridCells
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Width of each cell
     float cell_width = 2;
@@ -61,14 +61,14 @@ message GridCells
     float cell_height = 3;
 
     // Each cell is represented by the Point at the center of the cell
-    repeated geometry_msgs.Point cells = 4;
+    repeated Point cells = 4;
 }
 
 // This hold basic information about the characteristics of the OccupancyGrid
 message MapMetaData
 {
     // The time at which the map was loaded
-    builtin_interfaces.Time map_load_time = 1;
+    Time map_load_time = 1;
     
     // The map resolution [m/cell]
     float resolution = 2;
@@ -81,13 +81,13 @@ message MapMetaData
     
     // The origin of the map [m, m, rad].  This is the real-world pose of the
     // bottom left corner of cell (0,0) in the map.
-    geometry_msgs.Pose origin = 5;
+    Pose origin = 5;
 }
 
 message OccupancyGrid
 {
     // This represents a 2-D grid map
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // MetaData for the map
     MapMetaData info = 2;
@@ -104,7 +104,7 @@ message OccupancyGrid
 message Octomap
 {
     // A 3D map in binary format, as Octree
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Flag to denote a binary (only free/occupied) or full occupancy octree (.bt/.ot file)
     bool binary = 2;
@@ -122,10 +122,10 @@ message Octomap
 message OctomapWithPose
 {
     // A 3D map in binary format, as Octree
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // The pose of the octree with respect to the header frame 
-    geometry_msgs.Pose origin = 2;
+    Pose origin = 2;
 
     // The actual octree msg
     Octomap octomap = 3;

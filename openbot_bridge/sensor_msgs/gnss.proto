@@ -16,14 +16,14 @@ syntax = "proto3";
 
 package openbot_bridge.sensor_msgs;
 
-import "openbot_bridge/common_msgs/geometry.proto";
-import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 // Solution from a Global Navigation Satellite System (GNSS) receiver without
 // fused with any IMU.
 message Gnss 
 {
-  openbot_bridge.common_msgs.Header header = 1;
+  common_msgs.Header header = 1;
 
   // The time of position measurement, seconds since the GPS epoch (Jan 6,
   // 1980).
@@ -72,6 +72,6 @@ message Gnss
 // gnss raw data
 message RawData 
 {
-  openbot_bridge.common_msgs.Header header = 1;
+  common_msgs.Header header = 1;
   bytes data = 2;
 }

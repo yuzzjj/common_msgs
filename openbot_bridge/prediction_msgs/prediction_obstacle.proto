@@ -16,5 +16,4 @@ syntax = "proto3";
 
 package openbot_bridge.prediction_msgs;
 
-import "openbot_bridge/common_msgs/error_code.proto";
-import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";

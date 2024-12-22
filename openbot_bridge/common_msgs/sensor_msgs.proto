@@ -14,10 +14,10 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.sensor_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/std_msgs.proto";
-import "openbot_bridge/ros2_msgs/geometry_msgs.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
 
 // This message defines meta information for a camera. It should be in a
 // camera namespace on topic "camera_info" and accompanied by up to five
@@ -50,7 +50,7 @@ message CameraInfo
 {
     
     // Time of image acquisition, camera coordinate frame ID
-    std_msgs.Header header = 1; // Header timestamp should be acquisition time of image
+    Header header = 1; // Header timestamp should be acquisition time of image
                                 // Header frame_id should be optical frame of camera
                                 // origin of frame should be optical center of camera
                                 // +x should point to the right in the image
@@ -186,7 +186,7 @@ message ChannelFloat32
 // This message contains a compressed image.
 message CompressedImage
 {
-    std_msgs.Header header = 1;  // Header timestamp should be acquisition time of image
+    Header header = 1;  // Header timestamp should be acquisition time of image
                                 // Header frame_id should be optical frame of camera
                                 // origin of frame should be optical center of cameara
                                 // +x should point to the right in the image
@@ -215,7 +215,7 @@ message CompressedImage
 //  - Irradiance (watt/area), etc.
 message Illuminance
 {
-    std_msgs.Header header = 1; // timestamp is the time the illuminance was measured
+    Header header = 1; // timestamp is the time the illuminance was measured
                                 // frame_id is the location and direction of the reading
 
     float illuminance = 2;      // Measurement of the Photometric Illuminance in Lux.
@@ -225,7 +225,7 @@ message Illuminance
 
 message Image 
 {
-    std_msgs.Header header  = 1; // Header timestamp should be acquisition time of image
+    Header header  = 1; // Header timestamp should be acquisition time of image
                                  // Header frame_id should be optical frame of camera
                                  // origin of frame should be optical center of cameara
                                  // +x should point to the right in the image
@@ -273,17 +273,17 @@ message Image
 // covariance matrix, and disregard the associated estimate.
 message Imu
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
 
-    geometry_msgs.Quaternion orientation = 2;
+    Quaternion orientation = 2;
     repeated double orientation_covariance = 3 [packed=true]; // float64[9] orientation_covariance 
                                                               // Row major about x, y, z axes
 
-    geometry_msgs.Vector3 angular_velocity = 4;
+    Vector3 angular_velocity = 4;
     repeated double angular_velocity_covariance = 5 [packed=true];  // float64[9] angular_velocity_covariance  
                                                                     // Row major about x, y, z axes
 
-    geometry_msgs.Vector3 linear_acceleration = 6;
+    Vector3 linear_acceleration = 6;
     repeated double linear_acceleration_covariance = 7 [packed=true];  // float64[9] linear_acceleration_covariance 
                                                                         // Row major x, y z
 }
@@ -295,7 +295,7 @@ message Imu
 // will make fairly laser-specific assumptions about this data
 message LaserScan
 {
-    std_msgs.Header header = 1; // timestamp in the header is the acquisition time of
+    Header header = 1; // timestamp in the header is the acquisition time of
                                 // the first ray in the scan.
                                 //
                                 // in frame frame_id, angles are measured around
@@ -328,11 +328,11 @@ message LaserScan
 message PointCloud
 {
     // Time of sensor data acquisition, coordinate frame ID.
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Array of 3d points. Each Point32 should be interpreted as a 3d point
     // in the frame given in the header.
-    repeated geometry_msgs.Point32 points = 2;
+    repeated Point32 points = 2;
 
     // Each channel should have the same number of elements as points array,
     // and the data in each channel should correspond 1:1 with each point.
@@ -371,7 +371,7 @@ message PointCloud2
 {
 
     // Time of sensor data acquisition, and the coordinate frame ID (for 3d points).
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // 2D structure of the point cloud. If the cloud is unordered, height is
     // 1 and width is the length of the point cloud.
@@ -401,7 +401,7 @@ message PointCloud2
 
 message Range
 {
-    std_msgs.Header header = 1; // timestamp in the header is the time the ranger
+    Header header = 1; // timestamp in the header is the time the ranger
                                 // returned the distance reading
 
     // // Radiation type enums

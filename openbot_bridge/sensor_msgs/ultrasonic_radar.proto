@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot_bridge.sensor_msgs;
 
-import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 message Ultrasonic 
 {

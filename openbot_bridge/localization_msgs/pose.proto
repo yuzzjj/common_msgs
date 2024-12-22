@@ -17,7 +17,7 @@ syntax = "proto3";
 
 package openbot_bridge.localization_msgs;
 
-import "openbot_bridge/common_msgs/geometry.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
 
 message Pose 
 {

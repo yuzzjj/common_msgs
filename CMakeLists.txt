@@ -20,7 +20,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_GRPC "Build openbot_bridge gRPC support" true)
+option(BUILD_GRPC "Build openbot_bridge gRPC support" false)
 
 find_package(absl REQUIRED)
 find_package(Protobuf REQUIRED)

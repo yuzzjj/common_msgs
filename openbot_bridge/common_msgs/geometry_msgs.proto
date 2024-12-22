@@ -14,9 +14,9 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.geometry_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/std_msgs.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 // This expresses acceleration in free space broken into its linear and angular parts.
 message Accel 
@@ -29,7 +29,7 @@ message Accel
 message AccelStamped 
 {
     //  An accel with reference coordinate frame and timestamp
-    std_msgs.Header header = 1;
+    Header header = 1;
     Accel accel = 2;
 }
 
@@ -47,7 +47,7 @@ message AccelWithCovariance
 // This represents an estimated accel with reference coordinate frame and timestamp.
 message AccelWithCovarianceStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     AccelWithCovariance accel = 2;
 }
 
@@ -74,7 +74,7 @@ message Inertia
 // An Inertia with a time stamp and reference frame.
 message InertiaStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     Inertia inertia = 2;
 }
 
@@ -89,7 +89,7 @@ message Point
 // This represents a Point with reference coordinate frame and timestamp
 message PointStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     Point point = 2;
 }
 
@@ -116,7 +116,7 @@ message Polygon
 // This represents a Polygon with reference coordinate frame and timestamp
 message PolygonStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     Polygon polygon = 2;
 }
 
@@ -144,14 +144,14 @@ message Pose
 // An array of poses with a header for global reference.
 message PoseArray
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     repeated Pose poses = 2;
 }
 
 // A Pose with reference coordinate frame and timestamp
 message PoseStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     Pose pose = 2;
 }
 
@@ -170,7 +170,7 @@ message PoseWithCovariance
 // This expresses an estimated pose with a reference coordinate frame and timestamp
 message PoseWithCovarianceStamped 
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     PoseWithCovariance pose = 2;
 }
 
@@ -186,7 +186,7 @@ message Quaternion
 // This represents an orientation with reference coordinate frame and timestamp.
 message QuaternionStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     Quaternion quaternion = 2;
 }
 
@@ -211,7 +211,7 @@ message TransformStamped
     // in a self contained message.
 
     // The frame id in the header is used as the reference frame of this transform.
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // The frame id of the child frame to which this transform points.
     string child_frame_id = 2;
@@ -230,7 +230,7 @@ message Twist
 // A twist with reference coordinate frame and timestamp
 message TwistStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     Twist twist = 2;
 }
 
@@ -249,7 +249,7 @@ message TwistWithCovariance
 // This represents an estimated twist with reference coordinate frame and timestamp.
 message TwistWithCovarianceStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     TwistWithCovariance twist = 2;
 }
 
@@ -269,7 +269,7 @@ message Vector3Stamped
 {
     // Note that this follows vector semantics with it always anchored at the origin,
     // so the rotational elements of a transform are the only parts applied when transforming.
-    std_msgs.Header header = 1;
+    Header header = 1;
     Vector3 vector = 2;
 }
 
@@ -283,7 +283,7 @@ message Wrench
 // A wrench with reference coordinate frame and timestamp
 message WrenchStamped
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     Wrench wrench = 2;
 }
 
@@ -292,8 +292,54 @@ message VelocityStamped
     // This expresses the timestamped velocity vector of a frame 'body_frame_id' in the reference frame 'reference_frame_id' expressed from arbitrary observation frame 'header.frame_id'.
     // - If the 'body_frame_id' and 'header.frame_id' are identical, the velocity is observed and defined in the local coordinates system of the body
     //   which is the usual use-case in mobile robotics and is also known as a body twist.
-    std_msgs.Header header = 1;
+    Header header = 1;
     string body_frame_id = 2;
     string reference_frame_id = 3;
     Twist velocity = 4;
+}
+
+// A point in the map reference frame. The map defines an origin, whose
+// coordinate is (0, 0, 0).
+// Most openbot, including localization, perception, and prediction, generate
+// results based on the map reference frame.
+// Currently, the map uses Universal Transverse Mercator (UTM) projection. See
+// the link below for the definition of map origin.
+//   https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system
+// The z field of PointENU can be omitted. If so, it is a 2D location and we do
+// not care its height.
+message PointENU 
+{
+  double x = 1;  // East from the origin, in meters.
+  double y = 2;  // North from the origin, in meters.
+  double z = 3;  // Up from the WGS-84 ellipsoid, in
+                                          // meters.
+}
+
+// A point in the global reference frame. Similar to PointENU, PointLLH allows
+// omitting the height field for representing a 2D location.
+message PointLLH 
+{
+  // Longitude in degrees, ranging from -180 to 180.
+  double lon = 1;
+  // Latitude in degrees, ranging from -90 to 90.
+  double lat = 2;
+  // WGS-84 ellipsoid height in meters.
+  double height = 3;
+}
+
+// A general 2D point. Its meaning and units depend on context, and must be
+// explained in comments.
+message Point2D 
+{
+  double x = 1;
+  double y = 2;
+}
+
+// A general 3D point. Its meaning and units depend on context, and must be
+// explained in comments.
+message Point3D 
+{
+  double x = 1;
+  double y = 2;
+  double z = 3;
 }

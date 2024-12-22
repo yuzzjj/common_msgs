@@ -14,12 +14,12 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.visualization_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/std_msgs.proto";
-import "openbot_bridge/ros2_msgs/sensor_msgs.proto";
-import "openbot_bridge/ros2_msgs/geometry_msgs.proto";
-import "openbot_bridge/ros2_msgs/builtin_interfaces.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
+import "openbot_bridge/common_msgs/sensor_msgs.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
+import "openbot_bridge/common_msgs/builtin_interfaces.proto";
 
 message ImageMarker
 {
@@ -31,7 +31,7 @@ message ImageMarker
 
     // int32 ADD=0
     // int32 REMOVE=1
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Namespace which is used with the id to form a unique id.
     string ns = 2;
@@ -46,29 +46,29 @@ message ImageMarker
     int32 action = 5;
 
     // Two-dimensional coordinate position, in pixel-coordinates.
-    geometry_msgs.Point position = 6;
+    Point position = 6;
 
     // The scale of the object, e.g. the diameter for a CIRCLE.
     double scale = 7;
 
     // The outline color of the marker.
-    std_msgs.ColorRGBA outline_color = 8;
+    ColorRGBA outline_color = 8;
 
     // Whether or not to fill in the shape with color.
     uint32 filled = 9;
 
     // Fill color; in the range: [0.0-1.0]
-    std_msgs.ColorRGBA fill_color = 10;
+    ColorRGBA fill_color = 10;
 
     // How long the object should last before being automatically deleted.
     // 0 indicates forever.
-    builtin_interfaces.Duration lifetime = 11;
+    Duration lifetime = 11;
 
     // Coordinates in 2D in pixel coords. Used for LINE_STRIP, LINE_LIST, POINTS, etc.
-    repeated geometry_msgs.Point points = 12;
+    repeated Point points = 12;
 
     // The color for each line, point, etc. in the points field.
-    repeated std_msgs.ColorRGBA outline_colors = 13;
+    repeated ColorRGBA outline_colors = 13;
 }
 
 message InteractiveMarker
@@ -79,10 +79,10 @@ message InteractiveMarker
     // in the same frame.
     // Otherwise, you might receive feedback in a different frame.
     // For rviz, this will be the current 'fixed frame' set by the user.
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Initial pose. Also, defines the pivot point for rotations.
-    geometry_msgs.Pose pose = 2;
+    Pose pose = 2;
 
     // Identifying string. Must be globally unique in
     // the topic that this message is sent through.
@@ -114,7 +114,7 @@ message InteractiveMarkerControl
     // Defines the local coordinate frame (relative to the pose of the parent
     // interactive marker) in which is being rotated and translated.
     // Default: Identity
-    geometry_msgs.Quaternion orientation = 2;
+    Quaternion orientation = 2;
     
     
     // Orientation mode: controls how orientation changes.
@@ -183,7 +183,7 @@ message InteractiveMarkerControl
 message InteractiveMarkerFeedback
 {
     // Time/frame info.
-    std_msgs.Header header = 1;
+    Header header = 1;
     
     // Identifying string. Must be unique in the topic namespace.
     string client_id = 2;
@@ -212,7 +212,7 @@ message InteractiveMarkerFeedback
     
     // Current pose of the marker
     // Note: Has to be valid for all feedback types.
-    geometry_msgs.Pose pose = 6;
+    Pose pose = 6;
     
     // Contains the ID of the selected menu entry
     // Only valid for MENU_SELECT events.
@@ -222,7 +222,7 @@ message InteractiveMarkerFeedback
     // may contain the 3 dimensional position of the event on the
     // control.  If it does, mouse_point_valid will be true.  mouse_point
     // will be relative to the frame listed in the header.
-    geometry_msgs.Point mouse_point = 8;
+    Point mouse_point = 8;
     bool mouse_point_valid = 9;
 }
 
@@ -248,10 +248,10 @@ message InteractiveMarkerInit
 message InteractiveMarkerPose
 {
     // Time/frame info.
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Initial pose. Also, defines the pivot point for rotations.
-    geometry_msgs.Pose pose = 2;
+    Pose pose = 2;
 
     // Identifying string. Must be globally unique in
     // the topic that this message is sent through.
@@ -320,7 +320,7 @@ message Marker
     // int32 DELETEALL=3
 
     // Header for timestamp and frame id.
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // Namespace in which to place the object.
     // Used in conjunction with id to create a unique name for the object.
@@ -340,28 +340,28 @@ message Marker
     int32 action = 5;
 
     // Pose of the object with respect the frame_id specified in the header.
-    geometry_msgs.Pose pose = 6;
+    Pose pose = 6;
 
     // Scale of the object; 1,1,1 means default (usually 1 meter square).
-    geometry_msgs.Vector3 scale = 7;
+    Vector3 scale = 7;
 
     // Color of the object; in the range: [0.0-1.0]
-    std_msgs.ColorRGBA color = 8;
+    ColorRGBA color = 8;
 
     // How long the object should last before being automatically deleted.
     // 0 indicates forever.
-    builtin_interfaces.Duration lifetime = 9;
+    Duration lifetime = 9;
 
     // If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
     bool frame_locked = 10;
 
     // Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
-    repeated geometry_msgs.Point points = 11;
+    repeated Point points = 11;
 
     // Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
     // The number of colors provided must either be 0 or equal to the number of points provided.
     // NOTE: alpha is not yet used
-    repeated std_msgs.ColorRGBA colors = 12;
+    repeated ColorRGBA colors = 12;
 
     // Texture resource is a special URI that can either reference a texture file in
     // a format acceptable to (resource retriever)[https://index.ros.org/p/resource_retriever/]
@@ -371,7 +371,7 @@ message Marker
 
     // An image to be loaded into the rendering engine as the texture for this marker.
     // This will be used iff texture_resource is set to embedded.
-    sensor_msgs.CompressedImage texture = 14;
+    CompressedImage texture = 14;
 
     // Location of each vertex within the texture; in the range: [0.0-1.0]
     repeated UVCoordinate uv_coordinates = 15;

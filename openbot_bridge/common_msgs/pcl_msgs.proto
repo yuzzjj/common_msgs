@@ -14,10 +14,10 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.pcl_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/std_msgs.proto";
-import "openbot_bridge/ros2_msgs/sensor_msgs.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
+import "openbot_bridge/common_msgs/sensor_msgs.proto";
 
 message Vertices 
 {
@@ -27,22 +27,22 @@ message Vertices
 
 message ModelCoefficients 
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     repeated float values = 2;
 }
 
 message PointIndices 
 {
-    std_msgs.Header header = 1;
+    Header header = 1;
     repeated int32 indices = 2;    
 }
 
 message PolygonMesh 
 {
     // Separate header for the polygonal surface
-    std_msgs.Header header = 1;
+    Header header = 1;
     // Vertices of the mesh as a point cloud
-    sensor_msgs.PointCloud2 cloud = 2;
+    PointCloud2 cloud = 2;
     // List of polygons
     repeated Vertices polygons = 3;
 }

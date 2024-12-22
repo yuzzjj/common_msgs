@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot_bridge.monitor_msgs;
 
-import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 // Status summary. The value order is important, because when we summarize,
 // larger value will overwrite smaller value:
@@ -50,7 +50,7 @@ message Component
 
 message SystemStatus 
 {
-  openbot_bridge.common_msgs.Header header = 1;
+  common_msgs.Header header = 1;
 
   map<string, ComponentStatus> hmi_modules = 7;
   map<string, Component> components = 8;

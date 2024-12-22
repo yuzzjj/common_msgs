@@ -14,17 +14,17 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.trajectory_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/std_msgs.proto";
-import "openbot_bridge/ros2_msgs/geometry_msgs.proto";
-import "openbot_bridge/ros2_msgs/builtin_interfaces.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
+import "openbot_bridge/common_msgs/builtin_interfaces.proto";
 
 message JointTrajectory
 {
     // The header is used to specify the coordinate frame and the reference time for
     // the trajectory durations
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // The names of the active joints in each trajectory point. These names are
     // ordered and must correspond to the values in each trajectory point.
@@ -63,13 +63,13 @@ message JointTrajectoryPoint
     repeated double effort = 4;
 
     // Desired time from the trajectory start to arrive at this trajectory point.
-    builtin_interfaces.Duration time_from_start = 5;
+    Duration time_from_start = 5;
 }
 
 message MultiDOFJointTrajectory
 {
     // The header is used to specify the coordinate frame and the reference time for the trajectory durations
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // A representation of a multi-dof joint trajectory (each point is a transformation)
     // Each point along the trajectory will include an array of positions/velocities/accelerations
@@ -83,15 +83,15 @@ message MultiDOFJointTrajectory
 message MultiDOFJointTrajectoryPoint
 {
     // Each multi-dof joint can specify a transform (up to 6 DOF).
-    repeated geometry_msgs.Transform transforms = 1;
+    repeated Transform transforms = 1;
 
     // There can be a velocity specified for the origin of the joint.
-    repeated geometry_msgs.Twist velocities = 2;
+    repeated Twist velocities = 2;
 
     // There can be an acceleration specified for the origin of the joint.
-    repeated geometry_msgs.Twist accelerations = 3;
+    repeated Twist accelerations = 3;
 
     // Desired time from the trajectory start to arrive at this trajectory point.
-    builtin_interfaces.Duration time_from_start = 4;
+    Duration time_from_start = 4;
 
 }

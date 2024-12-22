@@ -16,14 +16,14 @@ syntax = "proto3";
 
 package openbot_bridge.sensor_msgs;
 
-import "openbot_bridge/common_msgs/geometry.proto";
-import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 // Measurements from an inertial measurement unit (IMU). The solution is with
 // respect to the IMU by default.
 message Imu 
 {
-  openbot_bridge.common_msgs.Header header = 1;
+  common_msgs.Header header = 1;
 
   // The time of IMU measurement, seconds since the GPS epoch (Jan 6, 1980).
   double measurement_time = 2;  // In seconds.
@@ -38,8 +38,8 @@ message Imu
   float measurement_span = 3;  // In seconds.
 
   // Forward/left/up in meters per square second.
-  openbot_bridge.common_msgs.Point3D linear_acceleration = 4;
+  common_msgs.Point3D linear_acceleration = 4;
 
   // Around forward/left/up axes in radians per second.
-  openbot_bridge.common_msgs.Point3D angular_velocity = 5;
+  common_msgs.Point3D angular_velocity = 5;
 }

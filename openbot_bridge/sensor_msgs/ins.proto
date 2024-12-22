@@ -16,8 +16,8 @@ syntax = "proto3";
 
 package openbot_bridge.sensor_msgs;
 
-import "openbot_bridge/common_msgs/geometry.proto";
-import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 message InsStat 
 {
@@ -30,7 +30,7 @@ message InsStat
 // and IMU measurements.
 message Ins 
 {
-  openbot_bridge.common_msgs.Header header = 1;
+  common_msgs.Header header = 1;
 
   // The time of position measurement, seconds since the GPS epoch (01/06/1980).
   double measurement_time = 2;  // In seconds.

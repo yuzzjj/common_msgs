@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package openbot_bridge.monitor_msgs;
 
-import "openbot_bridge/common_msgs/header.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 message MonitorMessageItem 
 {
@@ -63,7 +63,7 @@ message MonitorMessageItem
 
 message MonitorMessage 
 {
-  openbot_bridge.common_msgs.Header header = 1;
+  common_msgs.Header header = 1;
 
   repeated MonitorMessageItem item = 2;
 }

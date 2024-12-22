@@ -14,9 +14,9 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.diagnostic_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/std_msgs.proto";
+import "openbot_bridge/common_msgs/std_msgs.proto";
 
 message KeyValue
 {
@@ -50,7 +50,7 @@ message DiagnosticStatus
 message DiagnosticArray
 {
     // for timestamp
-    std_msgs.Header header = 1;
+    Header header = 1;
 
     // an array of components being reported on
     repeated DiagnosticStatus status = 2;

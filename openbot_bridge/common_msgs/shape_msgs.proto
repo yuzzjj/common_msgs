@@ -14,9 +14,9 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.shape_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/geometry_msgs.proto";
+import "openbot_bridge/common_msgs/geometry_msgs.proto";
 
 message Plane
 {
@@ -82,17 +82,17 @@ message SolidPrimitive
     // // Points of the polygon are ordered counter-clockwise.
     
     // uint8 PRISM_HEIGHT=0
-    geometry_msgs.Polygon polygon = 3;
+    Polygon polygon = 3;
 }
 
 // Definition of a mesh.
 message Mesh
 {
     // List of triangles; the index values refer to positions in vertices[].
-    repeated shape_msgs.MeshTriangle triangles = 1;
+    repeated MeshTriangle triangles = 1;
 
     // The actual vertices that make up the mesh.
-    repeated geometry_msgs.Point vertices = 2;
+    repeated Point vertices = 2;
 }
 
 // Definition of a triangle's vertices.

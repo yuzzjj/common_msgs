@@ -14,9 +14,9 @@
 
 syntax = "proto3";
 
-package openbot_bridge.ros2_msgs.std_msgs;
+package openbot_bridge.common_msgs;
 
-import "openbot_bridge/ros2_msgs/builtin_interfaces.proto";
+import "openbot_bridge/common_msgs/builtin_interfaces.proto";
 
 // Standard metadata for higher-level stamped data types.
 // This is generally used to communicate timestamped data
@@ -24,7 +24,7 @@ import "openbot_bridge/ros2_msgs/builtin_interfaces.proto";
 message Header 
 {
     // Two-integer timestamp that is expressed as seconds and nanoseconds.
-    builtin_interfaces.Time stamp = 1;
+    Time stamp = 1;
 
     // Transform frame with which this data is associated.
     string frame_id = 2;
