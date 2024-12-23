@@ -23,4 +23,5 @@ service SensorService
 {
    // sensor_msgs::Image
    rpc PublishImageSennorMessages(openbot_bridge.sensor_msgs.Image) returns (google.protobuf.Empty);
+
 }
