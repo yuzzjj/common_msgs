@@ -69,10 +69,10 @@ message Point3D
 //   qw = sqrt(1 - qx * qx - qy * qy - qz * qz).
 message Quaternion 
 {
-  double qx = 1;
-  double qy = 2;
-  double qz = 3;
-  double qw = 4;
+  double x = 1;
+  double y = 2;
+  double z = 3;
+  double w = 4;
 }
 
 // A general polygon, points are counter clockwise

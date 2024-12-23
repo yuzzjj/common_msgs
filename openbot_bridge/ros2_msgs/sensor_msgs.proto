@@ -197,7 +197,7 @@ message CompressedImage
                                 //   Acceptable values:
                                 //     jpeg, png, tiff
 
-    repeated uint32 data = 3;   // Compressed image buffer
+    bytes data = 3;   // Compressed image buffer
 }
 
 // Single photometric illuminance measurement.  Light should be assumed to be
@@ -255,7 +255,7 @@ message Image
     uint32 step = 6;
 
     // actual matrix data, size is (step * rows)
-    repeated uint32 data = 7;
+    bytes data = 7;
 }   
 
 // This is a message to hold data from an IMU (Inertial Measurement Unit)

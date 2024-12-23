@@ -18,51 +18,16 @@ package openbot_bridge.monitor_msgs;
 
 import "openbot_bridge/common_msgs/header.proto";
 
-message MonitorMessageItem 
+enum RecordingState 
 {
-  enum MessageSource 
-  {
-    UNKNOWN = 1;
-    CANBUS = 2;
-    CONTROL = 3;
-    DECISION = 4;
-    LOCALIZATION = 5;
-    PLANNING = 6;
-    PREDICTION = 7;
-    SIMULATOR = 8;
-    HWSYS = 9;
-    ROUTING = 10;
-    MONITOR = 11;
-    HMI = 12;
-    RELATIVE_MAP = 13;
-    GNSS = 14;
-    CONTI_RADAR = 15;
-    RACOBIT_RADAR = 16;
-    ULTRASONIC_RADAR = 17;
-    MOBILEYE = 18;
-    DELPHI_ESR = 19;
-    STORYTELLING = 20;
-    TASK_MANAGER = 21;
-    NANO_RADAR = 22;
-  }
-
-  MessageSource source = 1;
-
-  string msg = 2;
-
-  enum LogLevel 
-  {
-    INFO = 0;
-    WARN = 1;
-    ERROR = 2;
-    FATAL = 3;
-  }
-  LogLevel log_level = 3 [default = INFO];
+  STOPPED = 0;
+  RECORDING = 1;
+  TERMINATING = 2;
 }
 
-message MonitorMessage 
+message SmartRecorderStatus 
 {
   openbot_bridge.common_msgs.Header header = 1;
-
-  repeated MonitorMessageItem item = 2;
+  RecordingState recording_state = 2;
+  string state_message = 3;
 }
