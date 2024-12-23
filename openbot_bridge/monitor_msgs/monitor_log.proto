@@ -22,6 +22,7 @@ message MonitorMessageItem
 {
   enum MessageSource 
   {
+    NONE = 0;
     UNKNOWN = 1;
     CANBUS = 2;
     CONTROL = 3;
@@ -57,7 +58,7 @@ message MonitorMessageItem
     ERROR = 2;
     FATAL = 3;
   }
-  LogLevel log_level = 3 [default = INFO];
+  LogLevel log_level = 3;
 }
 
 message MonitorMessage 
