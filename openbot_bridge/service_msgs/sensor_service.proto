@@ -18,10 +18,13 @@ package openbot_bridge.service_msgs;
 
 import "google/protobuf/empty.proto";
 import "openbot_bridge/sensor_msgs/sensor_image.proto";
+import "openbot_bridge/sensor_msgs/pointcloud.proto"
 
 service SensorService 
 {
    // sensor_msgs::Image
    rpc PublishImageSennorMessages(openbot_bridge.sensor_msgs.Image) returns (google.protobuf.Empty);
+   // sensor_msgs::PointCloud
+   rpc SendPointCloud(stream openbot_bridge.sensor_msgs.PointCloud) returns (google.protobuf.Empty);
 
 }
